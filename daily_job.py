@@ -33,6 +33,9 @@ def main():
             continue
 
         ars_hoy = user.get("ars_hoy")
+if ars_hoy is not None and user.get("last_ars_update") and user.get("tna_pesos"):
+    ars_hoy = estimate_ars_today(float(ars_hoy), user["last_ars_update"], TIMEZONE, float(user["tna_pesos"]))
+
         tna = user.get("tna_pesos")
         dias = user.get("horizonte_dias")
         fecha_inicio = user.get("fecha_inicio")

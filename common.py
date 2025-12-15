@@ -205,3 +205,9 @@ def build_alert_message(board: dict) -> Optional[str]:
             f"Si cerrás hoy: {money_usd(board['usd_hoy'])} USD (Δ {money_usd(board['delta_usd'])})"
         )
     return None
+
+def estimate_ars_today(last_ars: float, last_date: str, timezone: str, tna_pesos: float) -> float:
+    hoy = today_in_tz(timezone)
+    ld = parse_date(last_date)
+    d = max(0, (hoy - ld).days)
+    return last_ars * (1 + tna_pesos * (d / 365))
