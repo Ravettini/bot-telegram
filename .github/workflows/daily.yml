@@ -1,0 +1,35 @@
+name: Carry Daily Telegram
+
+on:
+  schedule:
+    # 21:00 UTC = 18:00 Argentina (UTC-3)
+    - cron: "0 21 * * *"
+  workflow_dispatch:
+
+jobs:
+  run:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Install deps
+        run: |
+          pip install -r requirements.txt
+
+      - name: Run daily job
+        env:
+          TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
+          USD_INICIAL: "1600"
+          COSTO_SALIDA: "0.007"
+          TIMEZONE: "America/Argentina/Buenos_Aires"
+          MEP_API_URL: "https://dolarapi.com/v1/dolares/bolsa"
+          MEP_FIELD: "venta"
+          STATE_FILE: "state.json"
+        run: |
+          python daily_job.py
