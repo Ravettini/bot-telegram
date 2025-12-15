@@ -2,9 +2,7 @@ name: Carry Daily Telegram
 
 on:
   schedule:
-    # 21:00 UTC = 18:00 Argentina (UTC-3)
-    - cron: "0 18 * * *"
-
+    - cron: '*/5 * * * *'
   workflow_dispatch:
 
 jobs:
@@ -17,11 +15,10 @@ jobs:
       - name: Setup Python
         uses: actions/setup-python@v5
         with:
-          python-version: "3.11"
+          python-version: '3.11'
 
       - name: Install deps
-        run: |
-          pip install -r requirements.txt
+        run: pip install -r requirements.txt
 
       - name: Run daily job
         env:
@@ -33,5 +30,4 @@ jobs:
           MEP_FIELD: "venta"
           STATE_FILE: "state.json"
           ARS_MODE: "estimate"
-        run: |
-          python daily_job.py
+        run: python daily_job.py
