@@ -25,7 +25,7 @@ jobs:
       - name: Run daily job
         env:
           TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
-          USD_INICIAL: "1600"
+          USD_INICIAL: "1586"
           COSTO_SALIDA: "0.007"
           TIMEZONE: "America/Argentina/Buenos_Aires"
           MEP_API_URL: "https://dolarapi.com/v1/dolares/bolsa"
