@@ -31,5 +31,6 @@ jobs:
           MEP_API_URL: "https://dolarapi.com/v1/dolares/bolsa"
           MEP_FIELD: "venta"
           STATE_FILE: "state.json"
+          ARS_MODE: "estimate"
         run: |
           python daily_job.py
