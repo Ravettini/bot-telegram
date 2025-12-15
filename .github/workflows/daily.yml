@@ -3,7 +3,8 @@ name: Carry Daily Telegram
 on:
   schedule:
     # 21:00 UTC = 18:00 Argentina (UTC-3)
-    - cron: "0 21 * * *"
+    - cron: "0 18 * * *"
+
   workflow_dispatch:
 
 jobs:
