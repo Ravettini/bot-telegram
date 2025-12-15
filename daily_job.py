@@ -11,7 +11,7 @@ from common import (
 
 load_dotenv()
 
-USD_INICIAL = float(os.getenv("USD_INICIAL", "1600"))
+USD_INICIAL = float(os.getenv("USD_INICIAL", "1586"))
 COSTO_SALIDA = float(os.getenv("COSTO_SALIDA", "0.007"))
 TIMEZONE = os.getenv("TIMEZONE", "America/Argentina/Buenos_Aires")
 
